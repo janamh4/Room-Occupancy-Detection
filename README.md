@@ -70,12 +70,12 @@ Evaluation was performed separately on Test 1 and Test 2.
 
 Experimental Results
 
-Model	         | Test Set	|  Accuracy |	 Precision	|  Recall	|  F1-score
-__________________________________________________________________________
-MLP	          |   Test 1	|   97.07%  |   92.65%	  |  99.90%	|   96.14%
-Random Forest |   Test 1  |   92.61%	|   94.08%	  |  85.08%	|   89.36%
-MLP	          |   Test 2	|   91.28%	|   72.53%    |  94.19% |   81.95%
-Random Forest	|   Test 2	|   96.87%	|   94.49%	  |  90.39% |   92.39%
+|Model	         | Test Set	|  Accuracy |	 Precision	|  Recall	|  F1-score|
+|---|---|---:|---:|---:|---:|
+|MLP	          |   Test 1	|   97.07%  |   92.65%	  |  99.90%	|   96.14%|
+|Random Forest  |   Test 1  |   92.61%	|   94.08%	  |  85.08%	|   89.36%|
+|MLP	          |   Test 2	|   91.28%	|   72.53%    |  94.19% |   81.95%|
+|Random Forest	|   Test 2	|   96.87%	|   94.49%	  |  90.39% |   92.39%|
 
 Results Discussion
 
