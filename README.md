@@ -126,7 +126,7 @@ Experimental Results
 Performance with All Sensors Available
 
 | Model	            | Test Set	| Accuracy	| Precision	| Recall	| F1-score|
-|——-|——-|——-:|——-:|——-:|——-:|
+|---|---|---:|---:|---:|---:|
 | Standard MLP	     | Test 1	  | 97.07%  	| 92.65%	   | 99.90%	| 96.14%  |
 | Standard MLP	     | Test 2	  | 92.07%  	| 74.20%	   | 95.46%	| 83.50%  |
 | Sensor-Masked MLP	| Test 1	  | 96.44%	  | 91.17%	   | 99.90%	| 95.34%  |
