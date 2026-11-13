@@ -139,15 +139,15 @@ Sensor Failure Results
 The following table presents the F1-scores of the Sensor-Masked MLP under individual sensor failures.
 
 | Test Set	| Failed Sensor	| Accuracy	| Precision	| Recall	| F1-score |
-|——-|——-|——-:|——-:|——-:|———:|
-| Test 1	| Temperature	| 97.07%	| 92.65%	| 99.90%	| 96.14% |
-| Test 1	| Humidity	| 94.37%	| 86.70%	| 99.90%	| 92.83% |
-| Test 1	| Light	| 86.08%	| 74.33%	| 94.44%	| 83.19% |
-| Test 1	| CO2	| 97.94%	| 94.64%	| 100.00%	| 97.25% |
-| Test 2	| Temperature	| 86.68%	| 61.22%	| 99.85%	| 75.90% |
-| Test 2	| Humidity	| 84.78%	| 58.01%	| 99.85%	| 73.39% |
-| Test 2	| Light	| 72.25%	| 38.82%	| 55.69%	| 45.75% |
-| Test 2	| CO2	| 98.17%	| 92.27%	| 99.66%	| 95.82% |
+|---|---|---:|---:|---:|---:|
+| Test 1	  | Temperature	  | 97.07%	  | 92.65%	   | 99.90%	| 96.14%   |
+| Test 1	  | Humidity	     | 94.37%	  | 86.70%	   | 99.90%	| 92.83%   |
+| Test 1	  | Light	        | 86.08%	  | 74.33%	   | 94.44%	| 83.19%   |
+| Test 1	  | CO2	          | 97.94%	  | 94.64%	   | 100.00%	| 97.25%  |
+| Test 2	  | Temperature	  | 86.68%	  | 61.22%	   | 99.85%	| 75.90%   |
+| Test 2	  | Humidity	     | 84.78%	  | 58.01%	   | 99.85%	| 73.39%   |
+| Test 2	  | Light	        | 72.25%	  | 38.82%	   | 55.69%	| 45.75%   |
+| Test 2	  | CO2	          | 98.17%	  | 92.27%	   | 99.66%	| 95.82%   |
 
 Results Discussion
 
