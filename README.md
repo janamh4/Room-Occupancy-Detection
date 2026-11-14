@@ -6,8 +6,8 @@ This project focuses on room occupancy detection using machine learning and deep
 
 The project uses the UCI Occupancy Detection Dataset to classify room occupancy into two classes:
 
- * 0: Unoccupied
- * 1: Occupied
+* 0: Unoccupied
+* 1: Occupied
 
 The main objective is to compare different models and investigate whether sensor masking during training can improve robustness against sensor failures.
 
@@ -96,6 +96,13 @@ Sensor Masking Strategy:
 
 This approach helps the model learn from simulated sensor failure conditions.
 
+Training Details:
+
+* Maximum Epochs: 50
+* Actual Epochs: 9
+* Early Stopping: Patience = 7
+* Training Time: 11.28 seconds
+
 Sensor Failure Experiments
 
 Four sensor failure scenarios were evaluated:
@@ -108,6 +115,8 @@ Four sensor failure scenarios were evaluated:
 Each failure was simulated by replacing the corresponding standardized feature values with zero.
 
 The Sensor-Masked MLP was evaluated under these conditions on both Test 1 and Test 2.
+
+Additionally, the Standard MLP and Sensor-Masked MLP were compared under the same sensor failure conditions using F1-score.
 
 Evaluation Metrics
 
@@ -125,29 +134,55 @@ Experimental Results
 
 Performance with All Sensors Available
 
-| Model	            | Test Set	| Accuracy	| Precision	| Recall	| F1-score|
+| Model	| Test Set	| Accuracy	| Precision	| Recall	| F1-score |
 |---|---|---:|---:|---:|---:|
-| Standard MLP	     | Test 1	  | 97.07%  	| 92.65%	   | 99.90%	| 96.14%  |
-| Standard MLP	     | Test 2	  | 92.07%  	| 74.20%	   | 95.46%	| 83.50%  |
-| Sensor-Masked MLP	| Test 1	  | 96.44%	  | 91.17%	   | 99.90%	| 95.34%  |
-| Sensor-Masked MLP	| Test 2	  | 88.69%	  | 65.04%	   | 99.80%	| 78.76%  |
-| Random Forest	    | Test 1	  | 92.61%	  | 94.08%	   | 85.08%	| 89.36%  |
-| Random Forest    	| Test 2	  | 96.87%	  | 94.49%	   | 90.39%	| 92.39%  |
+| Standard MLP	| Test 1	| 97.07%	| 92.65%	| 99.90%	| 96.14% |
+| Standard MLP	| Test 2	| 92.07%	| 74.20%	| 95.46%	| 83.50% |
+| Sensor-Masked MLP	| Test 1	| 96.44%	| 91.17%	| 99.90%	| 95.34% | 
+| Sensor-Masked MLP	| Test 2	| 88.69%	| 65.04%	| 99.80%	| 78.76% |
+| Random Forest	| Test 1	| 92.61%	| 94.08%	| 85.08%	| 89.36% |
+| Random Forest	| Test 2	| 96.87%	| 94.49%	| 90.39%	| 92.39% |
 
 Sensor Failure Results
 
-The following table presents the F1-scores of the Sensor-Masked MLP under individual sensor failures.
+The following table presents the evaluation metrics of the Sensor-Masked MLP under individual sensor failures.
 
 | Test Set	| Failed Sensor	| Accuracy	| Precision	| Recall	| F1-score |
 |---|---|---:|---:|---:|---:|
-| Test 1	  | Temperature	  | 97.07%	  | 92.65%	   | 99.90%	| 96.14%   |
-| Test 1	  | Humidity	     | 94.37%	  | 86.70%	   | 99.90%	| 92.83%   |
-| Test 1	  | Light	        | 86.08%	  | 74.33%	   | 94.44%	| 83.19%   |
-| Test 1	  | CO2	          | 97.94%	  | 94.64%	   | 100.00%	| 97.25%  |
-| Test 2	  | Temperature	  | 86.68%	  | 61.22%	   | 99.85%	| 75.90%   |
-| Test 2	  | Humidity	     | 84.78%	  | 58.01%	   | 99.85%	| 73.39%   |
-| Test 2	  | Light	        | 72.25%	  | 38.82%	   | 55.69%	| 45.75%   |
-| Test 2	  | CO2	          | 98.17%	  | 92.27%	   | 99.66%	| 95.82%   |
+| Test 1	| Temperature	| 97.07%	| 92.65%	| 99.90%	| 96.14% |
+| Test 1	| Humidity	| 94.37%	| 86.70%	| 99.90%	| 92.83% |
+| Test 1	| Light	| 86.08%	| 74.33%	| 94.44%	| 83.19% |
+| Test 1	| CO2	| 97.94%	| 94.64%	| 100.00%	| 97.25% |
+| Test 2	| Temperature	| 86.68%	| 61.22%	| 99.85%	| 75.90% |
+| Test 2	| Humidity	| 84.78%	| 58.01%	| 99.85%	| 73.39% |
+| Test 2	| Light	| 72.25%	| 38.82%	| 55.69%	| 45.75% |
+| Test 2	| CO2	| 98.17%	| 92.27%	| 99.66%	| 95.82% |
+
+Original MLP vs Sensor-Masked MLP Under Sensor Failures
+
+The following table compares the F1-scores of both models under the same sensor failure conditions.
+
+| Test Set	| Failed Sensor	| Original MLP F1	| Sensor-Masked MLP F1 |
+|---|---|---:|---:|
+| Test 1	| Temperature	| 96.19%	| 96.14% |
+| Test 1	| Humidity	| 95.06%	| 92.83% |
+| Test 1	| Light	| 57.80%	| 83.19% |
+| Test 1	| CO2	| 87.58%	| 97.25% |
+| Test 2	| Temperature	| 76.13%	| 75.90% |
+| Test 2	| Humidity	| 76.18%	| 73.39% |
+| Test 2	| Light	| 15.23%	| 45.75% |
+| Test 2	| CO2	| 72.65%	| 95.82% |
+
+Training Time Comparison
+
+The measured training times for the three models are:
+
+Model	Training Time
+Standard MLP	15.23 seconds
+Sensor-Masked MLP	11.28 seconds
+Random Forest	0.51 seconds
+
+Note: Training times may vary depending on the hardware and execution environment.
 
 Results Discussion
 
@@ -156,14 +191,24 @@ The experimental results show that model performance varies across different tes
 * The Standard MLP achieved the highest F1-score on Test 1 when all sensors were available.
 * Random Forest achieved the best overall performance on Test 2 with all sensors available.
 * The Sensor-Masked MLP showed improvements under certain sensor failure conditions, particularly Light and CO2 failures.
-* On Test 2, CO2 failure resulted in an F1-score of 95.82% for the Sensor-Masked MLP.
+* On Test 2, Light failure improved from an F1-score of 15.23% with the Original MLP to 45.75% with the Sensor-Masked MLP.
+* On Test 2, CO2 failure improved from 72.65% to 95.82%.
 * However, sensor masking did not improve performance consistently across all sensors and test sets.
 
 These findings highlight the importance of evaluating model robustness under different sensor failure scenarios rather than relying only on normal operating conditions.
 
+Reproducibility and Generated Files
+
+The project includes reproducibility checks and saves evaluation outputs for further analysis.
+
+Generated files include:
+
+* final_confusion_matrices.png: Contains six confusion matrices for the three models across both test sets.
+* final_complete_input_metrics.csv: Contains accuracy, precision, recall, and F1-score for all three models on both test sets.
+
 Repository Contents
-*
- Room_Occupancy_Final_Reproducibility.ipynb: Notebook containing data preprocessing, model implementation, training, evaluation, sensor failure experiments, and reproducibility checks.
+
+* Room_Occupancy_Final_With_Training_Times.ipynb: Notebook containing data preprocessing, model implementation, training, evaluation, sensor failure experiments, and reproducibility checks.
 * README.md: Project documentation.
 * requirements.txt: Required Python libraries.
 
